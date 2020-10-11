@@ -2,15 +2,17 @@ import React from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Grid from '@material-ui/core/Grid';
 import Typo from '@material-ui/core/Typography';
-import Slider from 'react-slick';
 
+import Slider from '../components/Slider';
 import RoomDetail from '../components/RoomDetail';
+import RoomFacilities from '../components/RoomFacilities';
 import Tags from '../components/Tags';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import DirectContact from '../components/DirectContact';
 import Seo from '../components/seo';
 import { Room } from '../types/room';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(({ spacing }) => ({
   root: {
@@ -23,11 +25,20 @@ const useStyles = makeStyles(({ spacing }) => ({
   tags: {
     marginTop: spacing(2),
   },
+  title: {
+    marginBottom: spacing(2),
+  },
+  facilities: {
+    marginBottom: spacing(2),
+  },
+  imgSlide: {
+    marginBottom: spacing(1),
+  }
 }));
 
 export default function RoomDetailPage({ pageContext }: { pageContext: Room }) {
   const classes = useStyles();
-  const { images: roomImages } = pageContext;
+  const { images: roomImages, facilities } = pageContext;
 
   return (
     <Layout staticHeader>
@@ -45,19 +56,21 @@ export default function RoomDetailPage({ pageContext }: { pageContext: Room }) {
       />
       <div className={classes.root}>
         <Container>
+          <Typo variant="h4" component="h1" className={classes.title}>
+            {pageContext.name}
+          </Typo>
           <Grid container spacing={2}>
-            <Grid item md={8}>
+            <Grid item md={8} xs={12}>
               <Slider>
                 {roomImages.map(imageItem => (
                   <img
                     key={imageItem.id}
                     src={`http://localhost:1337${imageItem.url}`}
+                    className={clsx("img-fluid", classes.imgSlide)}
                   />
                 ))}
               </Slider>
-              <Typo variant="h4" component="h1">
-                {pageContext.name}
-              </Typo>
+              <RoomFacilities facilities={facilities} className={classes.facilities} />
               <Typo variant="body1">{pageContext.description}</Typo>
               <RoomDetail
                 size={pageContext.size}

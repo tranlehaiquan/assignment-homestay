@@ -1,8 +1,15 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typo from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import Img from 'gatsby-image';
+import { useStaticQuery, graphql } from 'gatsby';
 
+import Socials from '../Socials';
+import usePhone from '../../utils/usePhone';
+import useEmail from '../../utils/useEmail';
+import useAddress from '../../utils/useAddress';
 import Container from '../Container';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
@@ -20,18 +27,45 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
   copyRight: {
     color: palette.common.white,
     textAlign: 'center',
+  },
+  logo: {
+    maxWidth: 150,
+  },
+  linkColor: {
+    
   }
 }));
 
 function Footer() {
   const classes = useStyles();
+  const phone = usePhone();
+  const mail = useEmail();
+  const address = useAddress();
+  const data = useStaticQuery(graphql`
+    query {
+      strapiSiteConfig {
+        logo {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  `);
 
   return (
     <div className={classes.root}>
       <Container>
         <Grid container spacing={2}>
           <Grid item md={3}>
-            <Typo className={classes.title}>Logo</Typo>
+            <Typo className={classes.title}>
+              <Img
+                className={classes.logo}
+                fluid={data.strapiSiteConfig.logo.childImageSharp.fluid}
+              />
+            </Typo>
             <Typo className={classes.desc}>
               We always strive for growth and development as StylemixThemes. We
               don’t want to have a large team, we want to have a team that works
@@ -44,15 +78,14 @@ function Footer() {
           <Grid item md={3}>
             <Typo className={classes.title}>Contact us</Typo>
             <Typo className={classes.desc}>
-              1010 Berkler avenue, Brooklyn, New York City, NY 10018 US <br />
-              Tel.: +1 998 150 3020 <br />
-              Fax.: +1 998 150 3020 <br />
-              info@stylemixthemes.com
+              Address: {address} <br />
+              Tel.: <Link href={`tel:${phone}`}>{phone}</Link><br />
+              Mail: <Link href={`mailto:${mail}`}>{mail}</Link>
             </Typo>
           </Grid>
           <Grid item md={3}>
             <Typo className={classes.title}>Socials</Typo>
-
+            <Socials facebook="123" instagram="123" />
           </Grid>
           <Grid item xs={12}>
             <Typo className={classes.copyRight}>Copy Right @Quan Tran</Typo>

@@ -16,6 +16,7 @@ export interface Room {
       fixed: FixedObject;
     };
   };
+  facilities: Facilities;
   categories: {
     id: string;
     name: string;
@@ -30,7 +31,22 @@ type ImageRoom = {
     medium: ImageFormat;
     small: ImageFormat;
   };
+  url: string;
 };
+
+export type Facility = {
+  icon: string;
+  label: string;
+  id: number;
+  name: string;
+};
+
+export type Facilities = {
+  icon: string;
+  label: string;
+  id: number;
+  name: string;
+}[];
 
 interface ImageFormat {
   id: string;

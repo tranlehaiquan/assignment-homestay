@@ -29,7 +29,7 @@ const BestRoomSection: React.FC<BestRoomSectionProps> = ({ rooms }) => {
       <Container>
         <Grid container spacing={2}>
           {rooms.map(room => (
-            <Grid item md={4} key={room.id}>
+            <Grid item md={4} xs={12} key={room.id}>
               <ItemRoom className={classes.item} {...room} key={room.id} />
             </Grid>
           ))}

@@ -23,7 +23,7 @@
       "default": false
     },
     "preview": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -36,6 +36,59 @@
     "categories": {
       "collection": "category",
       "via": "rooms"
+    },
+    "size": {
+      "type": "integer"
+    },
+    "guests": {
+      "type": "integer",
+      "default": 1
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "bed": {
+      "type": "integer",
+      "default": 1
+    },
+    "roomType": {
+      "type": "enumeration",
+      "enum": [
+        "king",
+        "queen",
+        "Standart"
+      ],
+      "default": "Standart"
+    },
+    "hasAC": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasCableTv": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasFreeWifi": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasDailyCleaning": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasShower": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasFridge": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

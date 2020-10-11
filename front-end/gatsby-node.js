@@ -64,12 +64,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             url
           }
-          hasCableTv
-          hasAC
-          hasDailyCleaning
-          hasFreeWifi
-          hasFridge
-          hasShower
+          facilities {
+            icon
+            label
+            id
+            name
+          }
           previewRemoteImage {
             childImageSharp {
               fluid(jpegQuality: 80) {

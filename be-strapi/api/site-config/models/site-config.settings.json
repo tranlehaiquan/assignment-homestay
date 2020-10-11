@@ -1,0 +1,47 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_configs",
+  "info": {
+    "name": "siteConfig"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "author": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "navLinks": {
+      "type": "json"
+    },
+    "facilities": {
+      "type": "json"
+    },
+    "payUnit": {
+      "type": "string",
+      "default": "VNĐ"
+    },
+    "icoMoon": {
+      "type": "json"
+    }
+  }
+}

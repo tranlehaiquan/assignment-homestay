@@ -59,6 +59,7 @@ module.exports = {
         contentTypes: [
           'room',
           'page',
+          'facility'
         ],
         singleTypes: [`feature-tags`, `site-config`],
         queryLimit: 1000,

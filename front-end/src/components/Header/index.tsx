@@ -33,7 +33,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-  }
+  },
 }));
 
 interface HeaderProps {
@@ -43,10 +43,12 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ staticHeader = false }) => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "logo.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 150) {
-            ...GatsbyImageSharpFluid
+      strapiSiteConfig {
+        logo {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
@@ -60,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ staticHeader = false }) => {
         <Link to="/" className={classes.logoLink}>
           <Img
             className={classes.logo}
-            fluid={data.placeholderImage.childImageSharp.fluid}
+            fluid={data.strapiSiteConfig.logo.childImageSharp.fluid}
           />
         </Link>
 

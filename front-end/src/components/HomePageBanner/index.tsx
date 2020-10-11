@@ -39,13 +39,22 @@ const HomePageBanner = () => {
           }
         }
       }
+      strapiSiteConfig {
+        homePageBanner {
+          childImageSharp {
+            fluid (maxWidth: 1080, quality: 90) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
     }
   `);
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+      <Img fluid={data.strapiSiteConfig.homePageBanner.childImageSharp.fluid} />
       <div className={classes.description} >
         <Typo variant="h4">Hotel Booking Gatsby Theme</Typo>
         <Typo>
