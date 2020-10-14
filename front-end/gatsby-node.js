@@ -8,7 +8,6 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-// You can delete this file if you're not using it
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = async ({
@@ -20,7 +19,7 @@ exports.onCreateNode = async ({
   if (node.internal.type === 'StrapiRoom') {
     if (node.preview) {
       const fileNode = await createRemoteFileNode({
-        url: `http://localhost:1337${node.preview.url}`,
+        url: `${process.env.API_URL}${node.preview.url}`,
         getCache,
         createNode,
         createNodeId,
@@ -28,9 +27,7 @@ exports.onCreateNode = async ({
       });
 
       if (fileNode) {
-        // with schemaCustomization: add a field `previewRemoteImage` to your source plugin's node from the File node
         node.previewRemoteImage = fileNode.id;
-        // OR with inference: link your source plugin's node to the File node without schemaCustomization like this, but creates a less sturdy schema
         node.previewRemoteImage___NODE = fileNode.id;
       }
     }
@@ -63,6 +60,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           images {
             id
             url
+            formats {
+              large {
+                publicURL
+              }
+            }
           }
           facilities {
             icon

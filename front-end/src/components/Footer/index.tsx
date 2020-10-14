@@ -11,6 +11,7 @@ import usePhone from '../../utils/usePhone';
 import useEmail from '../../utils/useEmail';
 import useAddress from '../../utils/useAddress';
 import Container from '../Container';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(({ spacing, palette }) => ({
   root: {
@@ -31,9 +32,7 @@ const useStyles = makeStyles(({ spacing, palette }) => ({
   logo: {
     maxWidth: 150,
   },
-  linkColor: {
-    
-  }
+  linkColor: {},
 }));
 
 function Footer() {
@@ -60,12 +59,10 @@ function Footer() {
       <Container>
         <Grid container spacing={2}>
           <Grid item md={3}>
-            <Typo className={classes.title}>
-              <Img
-                className={classes.logo}
-                fluid={data.strapiSiteConfig.logo.childImageSharp.fluid}
-              />
-            </Typo>
+            <Img
+              className={clsx(classes.logo, classes.title)}
+              fluid={data.strapiSiteConfig.logo.childImageSharp.fluid}
+            />
             <Typo className={classes.desc}>
               We always strive for growth and development as StylemixThemes. We
               don’t want to have a large team, we want to have a team that works
@@ -79,7 +76,8 @@ function Footer() {
             <Typo className={classes.title}>Contact us</Typo>
             <Typo className={classes.desc}>
               Address: {address} <br />
-              Tel.: <Link href={`tel:${phone}`}>{phone}</Link><br />
+              Tel.: <Link href={`tel:${phone}`}>{phone}</Link>
+              <br />
               Mail: <Link href={`mailto:${mail}`}>{mail}</Link>
             </Typo>
           </Grid>

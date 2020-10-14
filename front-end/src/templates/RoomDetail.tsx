@@ -2,6 +2,7 @@ import React from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Grid from '@material-ui/core/Grid';
 import Typo from '@material-ui/core/Typography';
+import ReactMarkdown from 'react-markdown';
 
 import Slider from '../components/Slider';
 import RoomDetail from '../components/RoomDetail';
@@ -33,7 +34,7 @@ const useStyles = makeStyles(({ spacing }) => ({
   },
   imgSlide: {
     marginBottom: spacing(1),
-  }
+  },
 }));
 
 export default function RoomDetailPage({ pageContext }: { pageContext: Room }) {
@@ -65,13 +66,16 @@ export default function RoomDetailPage({ pageContext }: { pageContext: Room }) {
                 {roomImages.map(imageItem => (
                   <img
                     key={imageItem.id}
-                    src={`http://localhost:1337${imageItem.url}`}
-                    className={clsx("img-fluid", classes.imgSlide)}
+                    src={`${imageItem.formats.large.publicURL}`}
+                    className={clsx('img-fluid', classes.imgSlide)}
                   />
                 ))}
               </Slider>
-              <RoomFacilities facilities={facilities} className={classes.facilities} />
-              <Typo variant="body1">{pageContext.description}</Typo>
+              <RoomFacilities
+                facilities={facilities}
+                className={classes.facilities}
+              />
+              <ReactMarkdown source={pageContext.description}></ReactMarkdown>
               <RoomDetail
                 size={pageContext.size}
                 bed={pageContext.bed}

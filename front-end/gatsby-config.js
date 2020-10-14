@@ -53,7 +53,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-strapi',
+      resolve: 'gatsby-source-strapi-fix',
       options: {
         apiURL: process.env.API_URL || 'http://localhost:1332',
         contentTypes: [

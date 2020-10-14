@@ -24,6 +24,8 @@ export interface Room {
   images: ImageRoom[];
 }
 
+export default Room;
+
 type ImageRoom = {
   id: string;
   formats: {

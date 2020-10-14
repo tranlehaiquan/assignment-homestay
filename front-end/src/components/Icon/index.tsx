@@ -17,6 +17,9 @@ const Icon: React.FC<IconProps> = ({
   className = '',
 }) => {
   const iconSet = useIcoMoon();
+  const style: React.CSSProperties = {
+    fill: 'currentcolor',
+  };
   return (
     <IcomoonReact
       className={className}
@@ -24,6 +27,7 @@ const Icon: React.FC<IconProps> = ({
       color={color}
       size={size}
       icon={icon}
+      style={style}
     />
   );
 };
