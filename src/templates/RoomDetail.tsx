@@ -40,7 +40,6 @@ const useStyles = makeStyles(({ spacing }) => ({
 export default function RoomDetailPage({ pageContext }: { pageContext: Room }) {
   const classes = useStyles();
   const { images: roomImages, facilities } = pageContext;
-  console.log(roomImages);
   return (
     <Layout staticHeader>
       <Seo title={pageContext.name} />

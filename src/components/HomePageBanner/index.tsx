@@ -16,7 +16,7 @@ const useStyles = makeStyles(({ palette }) => ({
       height: '100%',
       backgroundColor: 'hsl(0 0% 0% / 0.4)',
       zIndex: 3,
-    }
+    },
   },
   description: {
     position: 'absolute',
@@ -25,8 +25,8 @@ const useStyles = makeStyles(({ palette }) => ({
     zIndex: 10,
     transform: 'translate(-50%, -50%)',
     color: 'white',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 }));
 
 const HomePageBanner = () => {
@@ -34,7 +34,7 @@ const HomePageBanner = () => {
     query {
       placeholderImage: file(relativePath: { eq: "bg2.jpg" }) {
         childImageSharp {
-          fluid (maxWidth: 1080, quality: 90)  {
+          fluid(maxWidth: 1080, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -42,11 +42,13 @@ const HomePageBanner = () => {
       strapiSiteConfig {
         homePageBanner {
           childImageSharp {
-            fluid (maxWidth: 1080, quality: 90) {
+            fluid(maxWidth: 1080, quality: 90) {
               ...GatsbyImageSharpFluid
             }
           }
         }
+        title
+        description
       }
     }
   `);
@@ -55,12 +57,11 @@ const HomePageBanner = () => {
   return (
     <div className={classes.root}>
       <Img fluid={data.strapiSiteConfig.homePageBanner.childImageSharp.fluid} />
-      <div className={classes.description} >
-        <Typo variant="h4">Hotel Booking Gatsby Theme</Typo>
+      <div className={classes.description}>
+        <Typo variant="h4">{data.strapiSiteConfig.title}</Typo>
+        <br />
         <Typo>
-          A feature rich and easy to use WordPress Hotel Theme with advanced
-          booking and online payments system for City Hotels, Motels, Resorts
-          and Apartments.
+          {data.strapiSiteConfig.description}
         </Typo>
       </div>
     </div>

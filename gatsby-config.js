@@ -44,7 +44,7 @@ module.exports = {
           fonts: {
             google: [
               {
-                family: `Montserrat`,
+                family: `Open Sans`,
                 variants: [`300`, `400`, `600`],
               },
             ],

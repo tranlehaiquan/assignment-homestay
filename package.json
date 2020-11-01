@@ -20,7 +20,7 @@
     "gatsby-plugin-react-helmet": "^3.3.12",
     "gatsby-plugin-sharp": "^2.6.37",
     "gatsby-source-filesystem": "^2.3.31",
-    "gatsby-source-strapi-fix": "0.0.2",
+    "gatsby-source-strapi-fix": "0.0.4",
     "gatsby-theme-material-ui": "^1.0.13",
     "gatsby-transformer-sharp": "^2.5.16",
     "icomoon-react": "^2.0.16",

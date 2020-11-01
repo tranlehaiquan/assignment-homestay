@@ -25,7 +25,7 @@ const theme = responsiveFontSizes(
     },
     typography: {
       fontFamily: [
-        'Montserrat',
+        'Open Sans',
         '-apple-system',
         'BlinkMacSystemFont',
         '"Segoe UI"',

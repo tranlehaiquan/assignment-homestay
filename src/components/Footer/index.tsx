@@ -70,9 +70,6 @@ function Footer() {
             </Typo>
           </Grid>
           <Grid item md={3}>
-            <Typo className={classes.title}>GALLERY</Typo>
-          </Grid>
-          <Grid item md={3}>
             <Typo className={classes.title}>Contact us</Typo>
             <Typo className={classes.desc}>
               Address: {address} <br />
@@ -81,6 +78,8 @@ function Footer() {
               Mail: <Link href={`mailto:${mail}`}>{mail}</Link>
             </Typo>
           </Grid>
+
+          <Grid item md={3}></Grid>
           <Grid item md={3}>
             <Typo className={classes.title}>Socials</Typo>
             <Socials facebook="123" instagram="123" />
