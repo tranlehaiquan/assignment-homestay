@@ -27,7 +27,7 @@ const IndexPage = () => {
           name
           guests
           isSpecial
-          previewRemoteImage {
+          preview {
             childImageSharp {
               fluid(jpegQuality: 80, maxHeight: 250) {
                 ...GatsbyImageSharpFluid
@@ -51,9 +51,6 @@ const IndexPage = () => {
               originalName
             }
           }
-        }
-        previewRemoteImage {
-          id
         }
       }
     }

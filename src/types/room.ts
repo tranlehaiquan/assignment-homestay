@@ -10,7 +10,7 @@ export interface Room {
   name: string;
   isSpecial: boolean;
   guests: number;
-  previewRemoteImage: {
+  preview: {
     childImageSharp: {
       fluid: FluidObject;
       fixed: FixedObject;
@@ -34,6 +34,7 @@ type ImageRoom = {
     small: ImageFormat;
   };
   url: string;
+  localImage: ImageFormat;
 };
 
 export type Facility = {

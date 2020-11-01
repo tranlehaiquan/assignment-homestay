@@ -55,7 +55,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-strapi-fix',
       options: {
-        apiURL: process.env.API_URL || 'http://localhost:1332',
+        apiURL: process.env.API_URL,
         contentTypes: [
           'room',
           'page',

@@ -35,7 +35,7 @@ interface RoomItemProps extends Room {
 }
 
 const RoomItem: React.FC<RoomItemProps> = ({
-  previewRemoteImage,
+  preview,
   name,
   summary,
   className = '',
@@ -48,7 +48,7 @@ const RoomItem: React.FC<RoomItemProps> = ({
     <div className={clsx(classes.root, className)}>
       <Img
         fluid={{
-          ...previewRemoteImage.childImageSharp.fluid,
+          ...preview.childImageSharp.fluid,
           aspectRatio: 1.4,
         }}
       />

@@ -6,7 +6,7 @@ interface SpecialRoomProps extends Room {
 }
 
 const SpecialRoom: React.FC<SpecialRoomProps> = ({ className }) => {
-  return <div className={className}>123</div>;
+  return <div className={className}></div>;
 };
 
 export default SpecialRoom;

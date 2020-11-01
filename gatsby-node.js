@@ -16,25 +16,9 @@ exports.onCreateNode = async ({
   createNodeId,
   node,
 }) => {
-  if (node.internal.type === 'StrapiRoom') {
-    if (node.preview) {
-      const fileNode = await createRemoteFileNode({
-        url: `${process.env.API_URL}${node.preview.url}`,
-        getCache,
-        createNode,
-        createNodeId,
-        parentNodeId: node.id,
-      });
-
-      if (fileNode) {
-        node.previewRemoteImage = fileNode.id;
-        node.previewRemoteImage___NODE = fileNode.id;
-      }
-    }
-  }
 };
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const RoomTemplate = path.resolve('./src/templates/RoomDetail.tsx');
   const PageTemplate = path.resolve('./src/templates/Page.tsx');
@@ -65,6 +49,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                 publicURL
               }
             }
+            localImage {
+              publicURL
+            }
           }
           facilities {
             icon
@@ -72,7 +59,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             name
           }
-          previewRemoteImage {
+          preview {
             childImageSharp {
               fluid(jpegQuality: 80) {
                 base64

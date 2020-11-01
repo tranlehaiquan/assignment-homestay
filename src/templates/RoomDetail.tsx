@@ -40,7 +40,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 export default function RoomDetailPage({ pageContext }: { pageContext: Room }) {
   const classes = useStyles();
   const { images: roomImages, facilities } = pageContext;
-
+  console.log(roomImages);
   return (
     <Layout staticHeader>
       <Seo title={pageContext.name} />
@@ -62,15 +62,17 @@ export default function RoomDetailPage({ pageContext }: { pageContext: Room }) {
           </Typo>
           <Grid container spacing={2}>
             <Grid item md={8} xs={12}>
-              <Slider>
-                {roomImages.map(imageItem => (
-                  <img
-                    key={imageItem.id}
-                    src={`${imageItem.formats.large.publicURL}`}
-                    className={clsx('img-fluid', classes.imgSlide)}
-                  />
-                ))}
-              </Slider>
+              {roomImages.length && (
+                <Slider>
+                  {roomImages.map(imageItem => (
+                    <img
+                      key={imageItem.id}
+                      src={`${imageItem.localImage.publicURL}`}
+                      className={clsx('img-fluid', classes.imgSlide)}
+                    />
+                  ))}
+                </Slider>
+              )}
               <RoomFacilities
                 facilities={facilities}
                 className={classes.facilities}
