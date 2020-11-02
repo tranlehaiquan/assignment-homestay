@@ -41,6 +41,10 @@ exports.createPages = async ({ graphql, actions }) => {
           isSpecial
           bed
           roomType
+          price {
+            price
+            duration
+          }
           images {
             id
             url

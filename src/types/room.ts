@@ -22,6 +22,7 @@ export interface Room {
     name: string;
   }[];
   images: ImageRoom[];
+  price: RoomPrice;
 }
 
 export default Room;
@@ -54,4 +55,9 @@ export type Facilities = {
 interface ImageFormat {
   id: string;
   publicURL: string;
+}
+
+export interface RoomPrice {
+  price: number;
+  duration: string;
 }

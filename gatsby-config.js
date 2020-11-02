@@ -40,29 +40,30 @@ module.exports = {
           // disableAutoprefixing: true,
           // disableMinification: true
         },
-        webFontsConfig: {
-          fonts: {
-            google: [
-              {
-                family: `Open Sans`,
-                variants: [`300`, `400`, `600`],
-              },
-            ],
-          },
-        },
+        webFontsConfig: null,
       },
     },
     {
       resolve: 'gatsby-source-strapi-fix',
       options: {
         apiURL: process.env.API_URL,
-        contentTypes: [
-          'room',
-          'page',
-          'facility'
-        ],
+        contentTypes: ['room', 'page', 'facility'],
         singleTypes: [`feature-tags`, `site-config`],
         queryLimit: 1000,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: 'Open Sans',
+              fontDisplay: 'swap',
+              variants: [`300`, `400`, `600`],
+            },
+          ],
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

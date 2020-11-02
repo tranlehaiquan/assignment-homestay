@@ -5,6 +5,7 @@ import Typo from '@material-ui/core/Typography';
 import ReactMarkdown from 'react-markdown';
 
 import Slider from '../components/Slider';
+import PriceBox from '../components/PriceBox';
 import RoomDetail from '../components/RoomDetail';
 import RoomFacilities from '../components/RoomFacilities';
 import Tags from '../components/Tags';
@@ -39,7 +40,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 
 export default function RoomDetailPage({ pageContext }: { pageContext: Room }) {
   const classes = useStyles();
-  const { images: roomImages, facilities } = pageContext;
+  const { images: roomImages, facilities, price } = pageContext;
   return (
     <Layout staticHeader>
       <Seo title={pageContext.name} />
@@ -87,6 +88,7 @@ export default function RoomDetailPage({ pageContext }: { pageContext: Room }) {
               <Tags className={classes.tags} tags={pageContext.categories} />
             </Grid>
             <Grid item md={4}>
+              <PriceBox {...price} />
               <DirectContact />
             </Grid>
           </Grid>

@@ -1,8 +1,6 @@
 import React from 'react';
 import Typo from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { useStaticQuery, graphql } from 'gatsby';
-import { string } from 'prop-types';
 
 import useEmail from '../../utils/useEmail';
 import usePhone from '../../utils/usePhone';
@@ -17,15 +15,6 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
   },
 }));
 
-type DataQuery = {
-  site: {
-    siteMetadata: {
-      phone: string;
-      email: string;
-    };
-  };
-};
-
 export default function DirectContext() {
   const classes = useStyles();
   const email = useEmail();
@@ -33,7 +22,7 @@ export default function DirectContext() {
 
   return (
     <div className={classes.root}>
-      <Typo className={classes.title}>DIRECT RESERVATION</Typo>
+      <Typo className={classes.title} variant="h6">DIRECT RESERVATION</Typo>
       <Typo>
         <a href={`tel: ${phone}`}>
           {phone}
